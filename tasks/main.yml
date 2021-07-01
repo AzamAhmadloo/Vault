@@ -1,0 +1,9 @@
+---
+- name: Install vault
+  include_tasks: vault-install.yml
+
+- name: initializing vault
+  include_tasks: vault-init.yml
+
+- name: initializing vault
+  include_tasks: vault-unseal.yml

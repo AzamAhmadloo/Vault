@@ -1,0 +1,20 @@
+[Unit]
+Description=vault, a tool for managing secrets
+Documentation=https://www.vaultproject.io/docs/
+After=network.target
+ConditionFileNotEmpty={{ vault_config_path }}
+
+[Service]
+User={{vault_user | default('vault')}}
+Group={{vault_group | default('vault')}}
+ExecStart=/usr/local/bin/vault server -config={{ vault_config_path }}
+ExecReload=/usr/local/bin/kill --signal HUP $MAINPID
+NoNewPrivileges=yes
+Environment=GOMAXPROCS=2
+StandardOutput=/var/log/vault/output.log
+StandardError=/var/log/vault/error.log
+Restart=on-failure
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target

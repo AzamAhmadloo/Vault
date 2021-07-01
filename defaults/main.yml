@@ -1,0 +1,10 @@
+---
+vault_version: "1.7.3"
+vault_checksum: "sha256:8453132a93b755c0a89dd4b2f1a99bd4af06f8167b81917f117080839031e03f"
+vault_install_prerequisites: ['unzip']
+vault_user: "vault"
+vault_group: "vault"
+vault_data_path: /opt/vault/data
+vault_config_path: "/etc/vault/vault.hcl"
+unseal_keys_dir_output: "{{ playbook_dir }}/unsealKey"
+root_token_dir_output: "{{ playbook_dir }}/rootKey"
